@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import Todo from './Components/Todo';
+import Header from './Components/Header';
 
 class App extends Component {
   state = {
@@ -45,6 +46,7 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
+        <Header />
         <Todo data={this.state.todos} markAsCompleted={this.markAsCompleted} removeTodo={this.removeItem}></Todo>
       </React.Fragment>
     );

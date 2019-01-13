@@ -3,7 +3,9 @@ import PropTypes from 'prop-types'
 
 export default class TodoItem extends Component {
   static propTypes = {
-    todo: PropTypes.object.isRequired
+    todo: PropTypes.object.isRequired,
+    removeItem: PropTypes.func.isRequired,
+    markAsCompleted: PropTypes.func.isRequired
   }
   getStyle = () => {
       return {
@@ -14,14 +16,25 @@ export default class TodoItem extends Component {
       }
   }
   buttonStyle = {
+      backgroundColor: 'orange',
+      border: 'none',
+      color: '#f4f4f4',
       float: 'right',
   }
   render() {
+    const {
+        todo: {
+            id,
+            title
+        },
+        removeItem,
+        markAsCompleted
+    } = this.props
     return (
       <div style={this.getStyle()}>
-        <input type="checkbox" onChange={this.props.markAsCompleted.bind(this, this.props.todo.id)} />
-        <p>{this.props.todo.title}</p>
-        <button style={this.buttonStyle} onClick={this.props.removeItem.bind(this,this.props.todo.id)}>x</button>
+        <input style={{display:'inline-block',marginRight:'5px'}}type="checkbox" onChange={markAsCompleted.bind(this, id)} />
+        {title}
+        <button style={this.buttonStyle} onClick={removeItem.bind(this,id)}>x</button>
       </div>
     )
   }
