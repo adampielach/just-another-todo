@@ -20,20 +20,24 @@ export default class TodoItem extends Component {
       border: 'none',
       color: '#f4f4f4',
       float: 'right',
+      lineHeight: '1.7em',
+      padding: '0 10px',
+      cursor: 'pointer'
   }
   render() {
     const {
         todo: {
             id,
-            title
+            title,
+            completed
         },
         removeItem,
         markAsCompleted
     } = this.props
     return (
       <div style={this.getStyle()}>
-        <input style={{display:'inline-block',marginRight:'5px'}}type="checkbox" onChange={markAsCompleted.bind(this, id)} />
-        {title}
+        <input style={{display:'inline-block',marginRight:'5px'}} id={id} type="checkbox" checked={completed?'checked':''} onChange={markAsCompleted.bind(this, id)} />
+        <label htmlFor={id}>{title}</label>
         <button style={this.buttonStyle} onClick={removeItem.bind(this,id)}>x</button>
       </div>
     )

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
 import Todo from './Components/Todo';
 import Header from './Components/Header';
+import AddTodo from './Components/AddTodo';
+import uuid from 'uuid';
 
+import './index.css';
 class App extends Component {
   state = {
     todos: [
@@ -28,6 +30,16 @@ class App extends Component {
       }
     ]
   }
+  addTask = (task) => {
+    const newTodo = {
+      id: uuid.v4(),
+      title: task,
+      completed: false
+    }
+    this.setState({
+      todos: [...this.state.todos, newTodo]
+    })
+  }
   markAsCompleted = (itemId) => {
     this.setState({
       todos: this.state.todos.map(todo => {
@@ -45,10 +57,11 @@ class App extends Component {
   }
   render() {
     return (
-      <React.Fragment>
+      <div className="container">
         <Header />
+        <AddTodo addTask={this.addTask}/>
         <Todo data={this.state.todos} markAsCompleted={this.markAsCompleted} removeTodo={this.removeItem}></Todo>
-      </React.Fragment>
+      </div>
     );
   }
 }
