@@ -4,7 +4,6 @@ import Todo from './Components/Todo';
 import Header from './Components/Header';
 import AddTodo from './Components/AddTodo';
 import About from './Components/pages/About';
-import uuid from 'uuid';
 
 import './index.css';
 import Axios from 'axios';
@@ -16,9 +15,9 @@ class App extends Component {
     Axios.get('https://jsonplaceholder.typicode.com/todos?_limit=10')
     .then(res => this.setState({todos: res.data}))
   }
+  // Will be able to add just one task with unique ID as this is the API restriction
   addTask = (title) => {
     Axios.post('https://jsonplaceholder.typicode.com/todos', {
-      id: uuid.v4(),
       title: title,
       completed: false
     })
