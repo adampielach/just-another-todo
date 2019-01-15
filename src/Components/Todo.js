@@ -4,7 +4,9 @@ import TodoItem from './TodoItem';
 
 export default class Todo extends Component {
   static propTypes = {
-    data: PropTypes.array.isRequired
+    data: PropTypes.array.isRequired,
+    markAsCompleted: PropTypes.func.isRequired,
+    removeTodo: PropTypes.func.isRequired
   }
   render() {
     return (

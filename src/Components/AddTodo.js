@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 
 export default class AddTodo extends Component {
-//   static propTypes = {
-//     prop: PropTypes
-//   }
+    static propTypes = {
+        addTask: PropTypes.func.isRequired,
+    }
     state = {
         title: ''
     }
